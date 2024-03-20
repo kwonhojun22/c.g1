@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+void main() {
+    float a, b, c, x ;  // 4+4 = 8bytes
+
+    cout << " a " << endl;
+    cin >> a;  // console in
+    cout << " b " << endl;
+    cin >> b;  // console in
+    cout << " c " << endl;
+    cin >> c;  // console in
+    cout << " a b c" << endl;
+    x = a*3600 + b*60 + c ;
+    cout << " x = " << x << endl;
+}

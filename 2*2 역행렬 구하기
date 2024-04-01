@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+int main() {
+	float a, b, c, d;
+	cout << "a,b,c,d를 입력하시오";
+	cin >> a >> b >> c >> d;
+	float A[2][2] = { {a,b},{c,d} };
+	float xx = a * d - b * c;
+	if (xx == 0) {
+		cout << "역행렬이 존재하지 않습니다.";
+	}
+	else {
+		A[0][0] = d / xx, A[0][1] = -b / xx, A[1][0] = -c / xx, A[1][1] = a / xx;
+		for (int n = 0; n < 2; n++) {
+			for (int m = 0; m < 2; m++) {
+				A[n][m];
+			}
+		}
+		// show results
+		for (int n = 0; n < 2; n++) {
+			for (int m = 0; m < 2; m++) {
+				cout << A[n][m] << "  ";
+			}
+			cout << endl;
+		}
+	}
+}

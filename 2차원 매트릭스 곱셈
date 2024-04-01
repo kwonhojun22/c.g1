@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+void main() {
+    int N = 2, M = 3, P = 2;
+    float A[2][3] = { {1,2,3}, {4,5,6} }, B[3][2] = { {1, 0}, {1, 0}, {2, 3} }, ** C;;
+  
+    C = new float* [N];
+    for (int n = 0; n < N; n++) {
+        C[n] = new float[P];
+    }
+
+    // 매트릭스 곱셈 수행
+    for (int n = 0; n < N; n++) {
+        for (int m = 0; m < P; m++) {
+            C[n][m] = 0;
+            for (int p = 0; p < M; p++) {
+                C[n][m] += A[n][p] * B[p][m];
+            }
+        }
+    }
+
+    // 결과 출력
+    for (int n = 0; n < N; n++) {
+        for (int m = 0; m < P; m++) {
+            cout << C[n][m] << "  ";
+        }
+        cout << endl;
+    }
+
+    // 동적 할당된 메모리 해제
+    for (int n = 0; n < N; n++) {
+        delete[] C[n];
+    }
+    delete[] C;
+
+}

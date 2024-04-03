@@ -10,7 +10,7 @@ void main() {
         C[n] = new float[P];
     }
 
-    // 매트릭스 곱셈 수행
+    // 매트릭스 곱셈
     for (int n = 0; n < N; n++) {
         for (int m = 0; m < P; m++) {
             C[n][m] = 0;
@@ -19,16 +19,13 @@ void main() {
             }
         }
     }
-
-    // 결과 출력
+    // 결과
     for (int n = 0; n < N; n++) {
         for (int m = 0; m < P; m++) {
             cout << C[n][m] << "  ";
         }
         cout << endl;
     }
-
-    // 동적 할당된 메모리 해제
     for (int n = 0; n < N; n++) {
         delete[] C[n];
     }

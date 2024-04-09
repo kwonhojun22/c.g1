@@ -1,0 +1,62 @@
+#include <iostream>
+#include <fstream>
+#include <cmath> 
+using namespace std;
+
+int main() {
+    char header[44];
+    ifstream xx("Beatles-LetItBe-wav_30s.wav", ios::binary | ios::in);
+
+    if (!xx) return 404; // 파일 존재 확인
+
+    xx.read(header, sizeof(header));
+    xx.close(); 
+
+    // Sprint 1 출
+    short* n = (short*)(header + 22); 
+    int* fs = (int*)(header + 24); 
+    int* b = (int*)(header + 28); 
+
+    // Sprint 2 - 
+    int N = *fs * 10; 
+    short* data = new short[N];
+
+    //내파일 만들기
+    *n = 1; 
+    *b = *n * *fs * sizeof(short);
+    xx.read((char*)data, N * sizeof(short));
+    ofstream yy("my.wav", ios::binary | ios::out);
+    if (!yy) return 404;
+    yy.write(header, sizeof(header));
+    yy.close();
+
+    int NN = 10 * *fs; 
+    short* data_ = new short[NN];
+    const float pi = 3.141592;
+    float dt = 1.0 / *fs, a = 10000., f = 440.; // 라 = 440Hz
+    for (int i = 0; i < NN; i++) {
+        data_[i] = (short)(a * sin(2.0 * pi * f * i * dt));
+    }
+
+    
+    ofstream yyy("mine.wav", ios::binary | ios::out);
+    if (!yyy) return 404;
+    yyy.write(header, sizeof(header));
+    yyy.write((char*)data_, NN * sizeof(short));
+    yyy.close();
+    // sprit 4
+    ofstream graphData("audio_graph_data1.txt");
+    if (!graphData) {
+        cout << "Failed to create graph data file." << endl;
+        return 404;
+    }
+    for (int i = 0; i < 10; ++i) {
+        graphData << i << " " << f << " " << a << " " << 1./fs[0] <<"\n";
+    }
+    graphData.close();
+
+    delete[] data; 
+    delete[] data_;
+
+    return 0;
+}

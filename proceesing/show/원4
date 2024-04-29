@@ -1,0 +1,14 @@
+cr b1,b2,b3,b4;
+ void setup(){
+   size(800,500);
+b1=new cr(50,50,10,0);
+b2=new cr(150,100,20,1);
+b3=new cr (70,200,60,2);
+b4=new cr (250,200,30,0);
+textSize(30);//텍스트 사이즈 크기
+text(b1.x,200,150); // 텍스트 붙일 위치
+b1.display();
+b2.display();
+b3.display();
+b4.display();
+ }

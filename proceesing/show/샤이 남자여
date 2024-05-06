@@ -1,0 +1,15 @@
+SihaBoy [] b;
+SihaGirl [] c;
+void setup() {
+  size(1200, 600);
+  c = new SihaGirl[3];
+  b = new SihaBoy[3];
+  for(int i=0;i<3;i++){
+    c[i] = new SihaGirl(100*(i+2), 200,200);
+    b[i] = new SihaBoy(100*(i+2),400,200);
+  }
+  for(int i=0;i<3;i++){
+  b[i].drawNecktie();  
+  c[i].drawHair();
+}
+}
